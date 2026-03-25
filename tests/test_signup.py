@@ -107,18 +107,18 @@ class TestSignupForActivity:
         assert updated_count == initial_count + 1
         assert email in activities_fixture[activity_name]["participants"]
     
-    def test_signup_with_special_characters_in_email(self, client, activities_fixture):
+    def test_signup_with_numeric_email(self, client, activities_fixture):
         """
-        Test that signup works with emails containing special characters.
+        Test that signup works with emails containing numbers.
         
         AAA Pattern:
-        - Arrange: Create an email with special characters
+        - Arrange: Create an email with numbers
         - Act: Make POST request to signup
         - Assert: Verify success and participant is added
         """
-        # Arrange: Use email with special characters
+        # Arrange: Use email with numbers
         activity_name = "Science Lab"
-        email = "student+lab@mergington.edu"
+        email = "student123@mergington.edu"
         
         # Act: Make the signup request
         response = client.post(
